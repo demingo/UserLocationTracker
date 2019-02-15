@@ -1,24 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oG2-bE-V0f">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--User Location Tracker-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UserLocationTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="HNK-Yd-9Yv">
+                                <rect key="frame" x="0.0" y="171" width="375" height="496"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="0VF-mq-Yd1"/>
+                                </connections>
+                            </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fz6-Vg-hJd">
+                                <rect key="frame" x="0.0" y="116" width="375" height="55"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fRi-OQ-B2U">
+                                        <rect key="frame" x="18" y="11.5" width="282" height="32.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <color key="textColor" red="0.23577217757701874" green="0.23576511442661285" blue="0.23576910793781281" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VAg-1Q-ZWs">
+                                        <rect key="frame" x="308" y="12" width="51" height="31"/>
+                                        <color key="onTintColor" red="0.82557690143585205" green="0.30941089987754822" blue="0.3271949291229248" alpha="1" colorSpace="calibratedRGB"/>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="fRi-OQ-B2U" firstAttribute="centerY" secondItem="fz6-Vg-hJd" secondAttribute="centerY" id="31u-jg-BL0"/>
+                                    <constraint firstItem="fRi-OQ-B2U" firstAttribute="leading" secondItem="fz6-Vg-hJd" secondAttribute="leading" constant="18" id="OW1-UF-wRi"/>
+                                    <constraint firstItem="VAg-1Q-ZWs" firstAttribute="leading" secondItem="fRi-OQ-B2U" secondAttribute="trailing" constant="8" id="S9v-gv-AiU"/>
+                                    <constraint firstAttribute="trailing" secondItem="VAg-1Q-ZWs" secondAttribute="trailing" constant="18" id="dKG-ZJ-708"/>
+                                    <constraint firstItem="VAg-1Q-ZWs" firstAttribute="centerY" secondItem="fz6-Vg-hJd" secondAttribute="centerY" id="gPs-YD-GbO"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="fz6-Vg-hJd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8Yc-2E-yE3"/>
+                            <constraint firstItem="HNK-Yd-9Yv" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.9" id="IKF-ou-hqq"/>
+                            <constraint firstAttribute="trailing" secondItem="HNK-Yd-9Yv" secondAttribute="trailing" id="S1B-lu-xv9"/>
+                            <constraint firstItem="HNK-Yd-9Yv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Xzx-bc-i51"/>
+                            <constraint firstItem="HNK-Yd-9Yv" firstAttribute="top" secondItem="fz6-Vg-hJd" secondAttribute="bottom" id="Y9b-AW-xbO"/>
+                            <constraint firstItem="fz6-Vg-hJd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pkP-ee-a6q"/>
+                            <constraint firstAttribute="trailing" secondItem="fz6-Vg-hJd" secondAttribute="trailing" id="sO5-iQ-fa3"/>
+                            <constraint firstAttribute="bottom" secondItem="HNK-Yd-9Yv" secondAttribute="bottom" id="zGa-m7-zY2"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="User Location Tracker" id="ivi-S3-qjS">
+                        <barButtonItem key="rightBarButtonItem" title="My Journeys" id="OA0-DM-jUZ"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="880.79999999999995" y="-593.25337331334333"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="18W-Cd-dAm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oG2-bE-V0f" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="BIk-8M-GnZ">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="dbQ-u0-1sR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PtH-Fy-bU2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53.600000000000001" y="-593.25337331334333"/>
         </scene>
     </scenes>
 </document>

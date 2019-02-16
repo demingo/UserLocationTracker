@@ -17,12 +17,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        checkLocationServices() // Comprueba que Location está activado
     }
 
-    func checkLocationServices() { // Comprueba que Location está activado en el teléfono
+    func checkLocationServices() {
         if CLLocationManager.locationServicesEnabled() {
             setupLocationManager()
+            checkLocationAuthorization()
         } else {
             // Dar indicación al usuario
         }
@@ -31,6 +33,21 @@ class ViewController: UIViewController {
     func setupLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
+    
+    func checkLocationAuthorization() {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedAlways:
+            break
+        case .denied:
+            break
+        case .notDetermined:
+            locationManager.requestAlwaysAuthorization()
+        case .restricted:
+            break
+        case .authorizedWhenInUse:
+            break
+        }
     }
 
 }

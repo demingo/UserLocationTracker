@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var switchButton: UISwitch!
     
     let locationManager = CLLocationManager()
-    let regionInMeters: Double = 1000
+    var coordinates = [CLLocationCoordinate2D]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +31,7 @@ class ViewController: UIViewController {
             setupLocationManager()
             checkLocationAuthorization()
         } else {
+            // Notificar al usuario de que Locactions está desactivado en el teléfono
             disableSwitch()
         }
     }
@@ -44,7 +45,8 @@ class ViewController: UIViewController {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedAlways:
             mapView.showsUserLocation = true
-            centerViewOnUserLocation()
+            locationManager.startUpdatingLocation()
+            mapView.setUserTrackingMode(.follow, animated: true)
             enableSwitch()
         case .denied:
             disableSwitch()
@@ -71,19 +73,37 @@ class ViewController: UIViewController {
         
         switchLabel.text = "Location not enabled"
     }
-    
-    func centerViewOnUserLocation() {
-        if let location = locationManager.location?.coordinate {
-            let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-            mapView.setRegion(region, animated: true)
-        }
-    }
 
+}
+
+extension ViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        
+        if overlay is MKPolyline {
+            let polyline = overlay as? MKPolyline
+            let polylineRenderer = MKPolylineRenderer(polyline: polyline!)
+            
+            polylineRenderer.strokeColor = UIColor.red
+            polylineRenderer.lineWidth = 3.0
+            
+            return polylineRenderer
+        }
+        return MKOverlayRenderer()
+    }
 }
 
 extension ViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        guard let coordinate = locations.last?.coordinate else { return }
+        if switchButton.isOn {
+            mapView.setUserTrackingMode(.follow, animated: true)
+            coordinates.append(coordinate)
+            let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
+            mapView.addOverlays([polyline])
+        }
         
     }
     

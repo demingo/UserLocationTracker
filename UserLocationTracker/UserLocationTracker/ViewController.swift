@@ -41,13 +41,14 @@ class ViewController: UIViewController {
     func setupLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.pausesLocationUpdatesAutomatically = true
     }
     
     func checkLocationAuthorization() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedAlways:
             mapView.showsUserLocation = true
-            locationManager.startUpdatingLocation()
             mapView.setUserTrackingMode(.follow, animated: true)
             enableSwitch()
         case .denied:
@@ -82,6 +83,11 @@ class ViewController: UIViewController {
             coordinates.removeAll()
             myJourneys.append(locations)
             locations.removeAll()
+            locationManager.pausesLocationUpdatesAutomatically = true
+            locationManager.stopUpdatingLocation()
+        } else {
+            locationManager.pausesLocationUpdatesAutomatically = false
+            locationManager.startUpdatingLocation()
         }
     }
     

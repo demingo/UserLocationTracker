@@ -13,11 +13,16 @@ import CoreLocation
 class ViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var switchLabel: UILabel!
+    @IBOutlet weak var switchButton: UISwitch!
+    
     let locationManager = CLLocationManager()
+    let regionInMeters: Double = 1000
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        disableSwitch()
         checkLocationServices() // Comprueba que Location está activado
     }
 
@@ -26,7 +31,7 @@ class ViewController: UIViewController {
             setupLocationManager()
             checkLocationAuthorization()
         } else {
-            // Dar indicación al usuario
+            disableSwitch()
         }
     }
     
@@ -38,15 +43,39 @@ class ViewController: UIViewController {
     func checkLocationAuthorization() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedAlways:
-            break
+            mapView.showsUserLocation = true
+            centerViewOnUserLocation()
+            enableSwitch()
         case .denied:
-            break
+            disableSwitch()
         case .notDetermined:
             locationManager.requestAlwaysAuthorization()
         case .restricted:
-            break
+            disableSwitch()
         case .authorizedWhenInUse:
+            disableSwitch()
             break
+        }
+    }
+    
+    func enableSwitch() {
+        switchLabel.isEnabled = true
+        switchButton.isEnabled = true
+        
+        switchLabel.text = "Tracking"
+    }
+    
+    func disableSwitch() {
+        switchLabel.isEnabled = false
+        switchButton.isEnabled = false
+        
+        switchLabel.text = "Location not enabled"
+    }
+    
+    func centerViewOnUserLocation() {
+        if let location = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+            mapView.setRegion(region, animated: true)
         }
     }
 
@@ -59,6 +88,6 @@ extension ViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        
+        checkLocationAuthorization()
     }
 }

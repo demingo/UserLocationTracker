@@ -27,13 +27,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fz6-Vg-hJd">
                                 <rect key="frame" x="0.0" y="116" width="375" height="55"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tracking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRi-OQ-B2U">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tracking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fRi-OQ-B2U">
                                         <rect key="frame" x="18" y="11.5" width="282" height="32.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <color key="textColor" red="0.23577217757701874" green="0.23576511442661285" blue="0.23576910793781281" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VAg-1Q-ZWs">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VAg-1Q-ZWs">
                                         <rect key="frame" x="308" y="12" width="51" height="31"/>
                                         <color key="onTintColor" red="0.82557690143585205" green="0.30941089987754822" blue="0.3271949291229248" alpha="1" colorSpace="calibratedRGB"/>
                                     </switch>
@@ -66,6 +66,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="HNK-Yd-9Yv" id="HDe-iF-WKb"/>
+                        <outlet property="switchButton" destination="VAg-1Q-ZWs" id="nf8-Fk-bT6"/>
+                        <outlet property="switchLabel" destination="fRi-OQ-B2U" id="mrZ-go-ZWV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

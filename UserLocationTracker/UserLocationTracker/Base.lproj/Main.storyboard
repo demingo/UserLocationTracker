@@ -27,7 +27,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fz6-Vg-hJd">
                                 <rect key="frame" x="0.0" y="116" width="375" height="55"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fRi-OQ-B2U">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tracking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRi-OQ-B2U">
                                         <rect key="frame" x="18" y="11.5" width="282" height="32.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <color key="textColor" red="0.23577217757701874" green="0.23576511442661285" blue="0.23576910793781281" alpha="1" colorSpace="calibratedRGB"/>
@@ -64,6 +64,9 @@
                     <navigationItem key="navigationItem" title="User Location Tracker" id="ivi-S3-qjS">
                         <barButtonItem key="rightBarButtonItem" title="My Journeys" id="OA0-DM-jUZ"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="HNK-Yd-9Yv" id="HDe-iF-WKb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

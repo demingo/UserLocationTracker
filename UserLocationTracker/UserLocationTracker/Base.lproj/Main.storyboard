@@ -36,6 +36,9 @@
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VAg-1Q-ZWs">
                                         <rect key="frame" x="253" y="7.5" width="51" height="31"/>
                                         <color key="onTintColor" red="0.82557690143585205" green="0.30941089987754822" blue="0.3271949291229248" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="switchPressed:" destination="BYZ-38-t0r" eventType="valueChanged" id="wbj-ZS-GWf"/>
+                                        </connections>
                                     </switch>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

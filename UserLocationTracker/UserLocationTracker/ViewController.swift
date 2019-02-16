@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     var coordinates = [CLLocationCoordinate2D]()
+    var locations = [CLLocation]()
+    var myJourneys = [[CLLocation]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +75,16 @@ class ViewController: UIViewController {
         
         switchLabel.text = "Location not enabled"
     }
+    
+    @IBAction func switchPressed(_ sender: UISwitch) {
+        if !sender.isOn {
+            mapView.removeOverlays(mapView.overlays)
+            coordinates.removeAll()
+            myJourneys.append(locations)
+            locations.removeAll()
+        }
+    }
+    
 
 }
 
@@ -98,7 +110,10 @@ extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         guard let coordinate = locations.last?.coordinate else { return }
+        
         if switchButton.isOn {
+            let location = locations.last
+            self.locations.append(location!)
             mapView.setUserTrackingMode(.follow, animated: true)
             coordinates.append(coordinate)
             let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)

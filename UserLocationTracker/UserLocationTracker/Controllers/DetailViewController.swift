@@ -22,6 +22,7 @@ class DetailViewController: UIViewController {
     
     var selectedJourney = [CLLocation]()
     var coordinates = [CLLocationCoordinate2D]()
+    let regionInMeters: Double = 10000
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
@@ -69,7 +70,7 @@ class DetailViewController: UIViewController {
     
     func addJourneyOverlay() {
         if let location = selectedJourney.first?.coordinate {
-            let region = MKCoordinateRegion.init(center: location, latitudinalMeters: 1000, longitudinalMeters: 1000)
+            let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
             mapView.setRegion(region, animated: true)
         }
         let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)

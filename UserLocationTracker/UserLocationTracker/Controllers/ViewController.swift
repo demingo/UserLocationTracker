@@ -91,6 +91,12 @@ class ViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationViewController = segue.destination as? JourneysViewController {
+            destinationViewController.myJourneys = self.myJourneys
+        }
+    }
+    
 
 }
 

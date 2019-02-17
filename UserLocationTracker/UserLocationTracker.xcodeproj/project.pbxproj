@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C87772E2218AB5100C5BA59 /* JourneysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C87772D2218AB5100C5BA59 /* JourneysViewController.swift */; };
+		6C8777302218D25600C5BA59 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C87772F2218D25600C5BA59 /* DetailViewController.swift */; };
 		6CE7580022175AE500F042EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE757FF22175AE500F042EC /* AppDelegate.swift */; };
 		6CE7580222175AE500F042EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE7580122175AE500F042EC /* ViewController.swift */; };
 		6CE7580522175AE500F042EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CE7580322175AE500F042EC /* Main.storyboard */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6C87772D2218AB5100C5BA59 /* JourneysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneysViewController.swift; sourceTree = "<group>"; };
+		6C87772F2218D25600C5BA59 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		6CE757FC22175AE500F042EC /* UserLocationTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserLocationTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CE757FF22175AE500F042EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6CE7580122175AE500F042EC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +39,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C87772C2218AB0800C5BA59 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6C87772F2218D25600C5BA59 /* DetailViewController.swift */,
+				6C87772D2218AB5100C5BA59 /* JourneysViewController.swift */,
+				6CE7580122175AE500F042EC /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		6CE757F322175AE500F042EC = {
 			isa = PBXGroup;
 			children = (
@@ -54,8 +68,8 @@
 		6CE757FE22175AE500F042EC /* UserLocationTracker */ = {
 			isa = PBXGroup;
 			children = (
+				6C87772C2218AB0800C5BA59 /* Controllers */,
 				6CE757FF22175AE500F042EC /* AppDelegate.swift */,
-				6CE7580122175AE500F042EC /* ViewController.swift */,
 				6CE7580322175AE500F042EC /* Main.storyboard */,
 				6CE7580622175AE700F042EC /* Assets.xcassets */,
 				6CE7580822175AE700F042EC /* LaunchScreen.storyboard */,
@@ -140,8 +154,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C87772E2218AB5100C5BA59 /* JourneysViewController.swift in Sources */,
 				6CE7580222175AE500F042EC /* ViewController.swift in Sources */,
 				6CE7580022175AE500F042EC /* AppDelegate.swift in Sources */,
+				6C8777302218D25600C5BA59 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

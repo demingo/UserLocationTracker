@@ -79,6 +79,13 @@ class ViewController: UIViewController {
         switchLabel.text = "Location disabled"
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationViewController = segue.destination as? JourneysViewController {
+            destinationViewController.myJourneys = self.myJourneys
+        }
+    }
+    
+    //MARK: - IB Actions
     @IBAction func switchPressed(_ sender: UISwitch) {
         if !sender.isOn {
             mapView.removeOverlays(mapView.overlays)
@@ -92,14 +99,6 @@ class ViewController: UIViewController {
             locationManager.startUpdatingLocation()
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationViewController = segue.destination as? JourneysViewController {
-            destinationViewController.myJourneys = self.myJourneys
-        }
-    }
-    
-
 }
 
 //MARK: - Map View
@@ -135,7 +134,6 @@ extension ViewController: CLLocationManagerDelegate {
             let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
             mapView.addOverlays([polyline])
         }
-        
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

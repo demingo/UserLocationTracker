@@ -13,13 +13,22 @@ class JourneysViewController: UIViewController {
     
     var myJourneys = [[CLLocation]]()
 
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
+    
+    //MARK: - Methods
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationViewController = segue.destination as? DetailViewController {
+            destinationViewController.selectedJourney = sender as! [CLLocation]
+        }
+    }
 
 }
 
+//MARK: - Table View
 extension JourneysViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,10 +48,4 @@ extension JourneysViewController: UITableViewDelegate, UITableViewDataSource {
         performSegue(withIdentifier: "detail", sender: myJourneys[indexPath.row])
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationViewController = segue.destination as? DetailViewController {
-            destinationViewController.selectedJourney = sender as! [CLLocation]
-        }
-    }
-    
 }

@@ -48,18 +48,18 @@
                                     <constraint firstItem="VAg-1Q-ZWs" firstAttribute="leading" secondItem="fRi-OQ-B2U" secondAttribute="trailing" constant="8" id="S9v-gv-AiU"/>
                                     <constraint firstAttribute="trailing" secondItem="VAg-1Q-ZWs" secondAttribute="trailing" constant="18" id="dKG-ZJ-708"/>
                                     <constraint firstItem="VAg-1Q-ZWs" firstAttribute="centerY" secondItem="fz6-Vg-hJd" secondAttribute="centerY" id="gPs-YD-GbO"/>
+                                    <constraint firstAttribute="height" constant="55" id="o5a-eT-iRw"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fz6-Vg-hJd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8Yc-2E-yE3"/>
-                            <constraint firstItem="HNK-Yd-9Yv" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.9" id="IKF-ou-hqq"/>
                             <constraint firstAttribute="trailing" secondItem="HNK-Yd-9Yv" secondAttribute="trailing" id="S1B-lu-xv9"/>
                             <constraint firstItem="HNK-Yd-9Yv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Xzx-bc-i51"/>
-                            <constraint firstItem="HNK-Yd-9Yv" firstAttribute="top" secondItem="fz6-Vg-hJd" secondAttribute="bottom" id="Y9b-AW-xbO"/>
                             <constraint firstItem="fz6-Vg-hJd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pkP-ee-a6q"/>
                             <constraint firstAttribute="trailing" secondItem="fz6-Vg-hJd" secondAttribute="trailing" id="sO5-iQ-fa3"/>
+                            <constraint firstItem="HNK-Yd-9Yv" firstAttribute="top" secondItem="fz6-Vg-hJd" secondAttribute="bottom" id="t93-yr-Qnx"/>
                             <constraint firstAttribute="bottom" secondItem="HNK-Yd-9Yv" secondAttribute="bottom" id="zGa-m7-zY2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -144,6 +144,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Eaw-g3-q8S">
                                 <rect key="frame" x="0.0" y="306.5" width="375" height="360.5"/>
+                                <connections>
+                                    <outlet property="delegate" destination="8qx-VU-u7Z" id="eSo-gE-TgC"/>
+                                </connections>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yES-E7-g3N">
                                 <rect key="frame" x="18" y="128" width="339" height="30"/>
@@ -204,6 +207,7 @@
                         <outlet property="altitudeLabel" destination="mQu-Ea-pMs" id="d3k-DV-KGo"/>
                         <outlet property="dateLabel" destination="yES-E7-g3N" id="qBB-xi-iNU"/>
                         <outlet property="distanceLabel" destination="RK7-Ta-ZGU" id="e4c-Rw-Klk"/>
+                        <outlet property="mapView" destination="Eaw-g3-q8S" id="2Lv-h9-XfN"/>
                         <outlet property="speedLabel" destination="PKm-or-WRP" id="8I3-Zi-ycX"/>
                         <outlet property="timeLabel" destination="Aq4-0J-Agg" id="WDY-3G-EzT"/>
                     </connections>

@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     var locations = [CLLocation]()
     var myJourneys = [[CLLocation]]()
     
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +29,7 @@ class ViewController: UIViewController {
         checkLocationServices() // Comprueba que Location está activado
     }
 
+    //MARK: - Methods
     func checkLocationServices() {
         if CLLocationManager.locationServicesEnabled() {
             setupLocationManager()
@@ -74,7 +76,7 @@ class ViewController: UIViewController {
         switchLabel.isEnabled = false
         switchButton.isEnabled = false
         
-        switchLabel.text = "Location not enabled"
+        switchLabel.text = "Location disabled"
     }
     
     @IBAction func switchPressed(_ sender: UISwitch) {
@@ -100,6 +102,7 @@ class ViewController: UIViewController {
 
 }
 
+//MARK: - Map View
 extension ViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -117,6 +120,7 @@ extension ViewController: MKMapViewDelegate {
     }
 }
 
+//MARK: - Location Manager
 extension ViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

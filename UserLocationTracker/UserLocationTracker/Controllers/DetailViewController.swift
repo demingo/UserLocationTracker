@@ -8,8 +8,11 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 class DetailViewController: UIViewController {
+    
+    @IBOutlet weak var mapView: MKMapView!
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -18,14 +21,22 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var altitudeLabel: UILabel!
     
     var selectedJourney = [CLLocation]()
+    var coordinates = [CLLocationCoordinate2D]()
     
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupLabel()
+        selectedJourney.forEach { location in
+            coordinates.append(location.coordinate)
+        }
+        
+        setupLabels()
+        addJourneyOverlay()
     }
     
-    func setupLabel() {
+    //MARK: - Methods
+    func setupLabels() {
         var journeyDate = " "
         var journeyTime = " "
         var avgSpeedRounded = " "
@@ -55,5 +66,32 @@ class DetailViewController: UIViewController {
         speedLabel.text = "speed: " + avgSpeedRounded + " km/h"
         altitudeLabel.text = "altitude: " + altitude + " meters"
     }
+    
+    func addJourneyOverlay() {
+        if let location = selectedJourney.first?.coordinate {
+            let region = MKCoordinateRegion.init(center: location, latitudinalMeters: 1000, longitudinalMeters: 1000)
+            mapView.setRegion(region, animated: true)
+        }
+        let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
+        mapView.addOverlays([polyline])
+    }
 
+}
+
+//MARK: - Map View
+extension DetailViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        
+        if overlay is MKPolyline {
+            let polyline = overlay as? MKPolyline
+            let polylineRenderer = MKPolylineRenderer(polyline: polyline!)
+            
+            polylineRenderer.strokeColor = UIColor.red
+            polylineRenderer.lineWidth = 3.0
+            
+            return polylineRenderer
+        }
+        return MKOverlayRenderer()
+    }
 }
